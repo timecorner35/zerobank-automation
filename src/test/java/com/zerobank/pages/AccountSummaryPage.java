@@ -10,5 +10,11 @@ public class AccountSummaryPage extends BasePage{
     @FindBy(xpath = "(//tr/td/a)[3]")
     public WebElement brokarage;
 
+    @FindBy(xpath = "(//tr/td/a)[4]")
+    public WebElement checking;
+
+    @FindBy(xpath = "(//tr/td/a)[5]")
+    public WebElement creditCard;
+
 
 }
