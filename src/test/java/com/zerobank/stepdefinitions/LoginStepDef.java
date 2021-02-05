@@ -1,5 +1,6 @@
 package com.zerobank.stepdefinitions;
 
+import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.DashboardPage;
 import com.zerobank.pages.LoginPage;
@@ -8,6 +9,7 @@ import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 public class LoginStepDef {
 
@@ -32,12 +34,13 @@ public class LoginStepDef {
 
 
 
+
+
     }
 
     @When("Account drop down should have Savings selected")
     public void account_drop_down_should_have_Savings_selected() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        Assert.assertEquals("Savings", new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
 
 }
