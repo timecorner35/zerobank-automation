@@ -12,7 +12,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
-public class LoginStepDef {
+public class AccountActivityNavigationStepDef {
 
     @Given("the user is logged in")
     public void the_user_is_logged_in()  {

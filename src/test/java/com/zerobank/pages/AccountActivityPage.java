@@ -11,6 +11,22 @@ public class AccountActivityPage extends BasePage{
     public WebElement dropdown;
     public Select select = new Select(dropdown);
 
+    @FindBy(xpath = "(//li/a)[15]")
+    public WebElement findTransactions;
+
+    @FindBy(id = "aa_fromDate")
+    public WebElement dateFrom;
+
+    @FindBy(id = "aa_toDate")
+    public WebElement dateTo;
+
+    @FindBy(css = ".btn.btn-primary")
+    public WebElement searchButton;
+
+
+
+
+
 
 
 
