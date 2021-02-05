@@ -20,10 +20,21 @@ public class LoginPage {
     @FindBy(name = "submit")
     public WebElement submit;
 
+    @FindBy(id = "details-button")
+    public WebElement details;
+
+    @FindBy(id = "proceed-link")
+    public WebElement proceed;
+
+
+
     public void login(){
+
         username.sendKeys(ConfigurationReader.get("username"));
         password.sendKeys(ConfigurationReader.get("password"));
         submit.click();
+        details.click();
+        proceed.click();
     }
 
 

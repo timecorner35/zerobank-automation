@@ -10,9 +10,10 @@ import org.junit.Assert;
 public class LoginStepDef {
 
     @Given("the user is logged in")
-    public void the_user_is_logged_in() {
+    public void the_user_is_logged_in() throws InterruptedException {
         Driver.get().get(ConfigurationReader.get("url"));
         new LoginPage().login();
+        Thread.sleep(3000);
         String actualTitle = Driver.get().getTitle();
         System.out.println("actualTitle = " + actualTitle);
 //        String expectedTitle = ""
@@ -26,9 +27,11 @@ public class LoginStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
     @When("Account drop down should have Savings selected")
     public void account_drop_down_should_have_Savings_selected() {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
 }
