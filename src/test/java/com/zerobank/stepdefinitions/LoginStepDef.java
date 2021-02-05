@@ -79,5 +79,16 @@ public class LoginStepDef {
         Assert.assertEquals("Credit Card", new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
 
+    @When("the user clicks on Loan link on the Account Summary page")
+    public void the_user_clicks_on_Loan_link_on_the_Account_Summary_page() {
+        new AccountSummaryPage().loan.click();
+    }
+
+    @Then("Account drop down should have Loan selected")
+    public void account_drop_down_should_have_Loan_selected() {
+        Assert.assertEquals("Loan", new AccountActivityPage().select.getFirstSelectedOption().getText());
+    }
+
+
 
 }
