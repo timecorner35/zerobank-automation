@@ -10,7 +10,7 @@ public class AccountActivityPage extends BasePage{
     @FindBy(id = "aa_accountId")
     public WebElement dropdown;
     public Select select = new Select(dropdown);
-    public List<WebElement> options = select.getOptions();
+
 
 
 
