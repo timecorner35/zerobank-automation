@@ -10,14 +10,12 @@ import org.junit.Assert;
 public class LoginStepDef {
 
     @Given("the user is logged in")
-    public void the_user_is_logged_in() throws InterruptedException {
+    public void the_user_is_logged_in()  {
         Driver.get().get(ConfigurationReader.get("url"));
         new LoginPage().login();
-        Thread.sleep(3000);
         String actualTitle = Driver.get().getTitle();
-        System.out.println("actualTitle = " + actualTitle);
-//        String expectedTitle = ""
-//        Assert.assertEquals();
+        String expectedTitle = "Account Summary";
+        Assert.assertTrue(actualTitle.contains(expectedTitle));
 
     }
 
