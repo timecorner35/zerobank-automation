@@ -17,6 +17,7 @@ public class AccountActivityNavigationStepDef {
     @Given("the user is logged in")
     public void the_user_is_logged_in()  {
         Driver.get().get(ConfigurationReader.get("url"));
+        Driver.get().manage().window().maximize();
         new LoginPage().login();
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = "Account Summary";
