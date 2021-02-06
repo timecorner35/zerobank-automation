@@ -85,5 +85,41 @@ public class FindTransactionsStepDef {
         throw new io.cucumber.java.PendingException();
     }
 
+    @Then("results table should show at least one result under Deposit")
+    public void results_table_should_show_at_least_one_result_under_Deposit() {
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+        for (WebElement webElement : accountActivityPage.depositColomn) {
+            if(!webElement.getText().isBlank()){
+                Assert.assertTrue(true);
+                return;
+            }
+        }
+        Assert.fail();
+    }
+
+    @Then("results table should show at least one result under Withdrawal")
+    public void results_table_should_show_at_least_one_result_under_Withdrawal() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @When("user selects type {string}")
+    public void user_selects_type(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("results table should show no result under Withdrawal")
+    public void results_table_should_show_no_result_under_Withdrawal() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+    @Then("results table should show at least one result under Withdrawal But results table should show no result under Deposit")
+    public void results_table_should_show_at_least_one_result_under_Withdrawal_But_results_table_should_show_no_result_under_Deposit() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 }
