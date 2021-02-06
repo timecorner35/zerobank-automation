@@ -64,15 +64,19 @@ public class FindTransactionsStepDef {
     }
 
     @Then("results table should only show descriptions containing {string}")
-    public void results_table_should_only_show_descriptions_containing(String string) {
+    public void results_table_should_only_show_descriptions_containing(String string) throws Throwable {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         BrowserUtils.waitFor(1);
+        if (accountActivityPage.tablerows.size()==0) {
+            Assert.assertTrue(false);
+
+        }
+
         for (WebElement tablerow : accountActivityPage.tablerows) {
             System.out.println(tablerow.getText());
             Assert.assertTrue(tablerow.getText().contains(string));
 
         }
-
     }
 
     @Then("results table should not show descriptions containing {string}")
