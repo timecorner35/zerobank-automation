@@ -2,9 +2,16 @@ package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.DashboardPage;
+import com.zerobank.utilities.BrowserUtils;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+
+import java.util.Date;
+
 
 public class FindTransactionsStepDef {
     @Given("the user accesses the Find Transactions tab")
@@ -23,7 +30,10 @@ public class FindTransactionsStepDef {
     }
     @Then("results table should only show transactions dates between {string} to {string}")
     public void results_table_should_only_show_transactions_dates_between_to(String string, String string2) {
-        System.out.println("hola");
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+
+
+
     }
 
 
@@ -44,5 +54,32 @@ public class FindTransactionsStepDef {
         // Write code here that turns the phrase above into concrete actions
         throw new io.cucumber.java.PendingException();
     }
+
+    @When("the user enters description {string}")
+    public void the_user_enters_description(String string) {
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+        accountActivityPage.description.clear();
+        accountActivityPage.description.sendKeys(string);
+
+    }
+
+    @Then("results table should only show descriptions containing {string}")
+    public void results_table_should_only_show_descriptions_containing(String string) {
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+        BrowserUtils.waitFor(1);
+        for (WebElement tablerow : accountActivityPage.tablerows) {
+            System.out.println(tablerow.getText());
+            Assert.assertTrue(tablerow.getText().contains(string));
+
+        }
+
+    }
+
+    @Then("results table should not show descriptions containing {string}")
+    public void results_table_should_not_show_descriptions_containing(String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
 
 }

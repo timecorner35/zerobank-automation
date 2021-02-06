@@ -23,6 +23,15 @@ public class AccountActivityPage extends BasePage{
     @FindBy(css = ".btn.btn-primary")
     public WebElement searchButton;
 
+    @FindBy(id = "aa_description")
+    public WebElement description;
+
+    @FindBy(xpath = "//*[@id='filtered_transactions_for_account']//tbody/tr")
+    public List<WebElement> tablerows;
+
+
+
+
 
 
 
