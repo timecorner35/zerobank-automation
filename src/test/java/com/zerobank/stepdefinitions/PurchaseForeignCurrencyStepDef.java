@@ -62,5 +62,16 @@ public class PurchaseForeignCurrencyStepDef {
 
     }
     }
+
+    @When("user tries to calculate cost without entering a value")
+    public void userTriesToCalculateCostWithoutEnteringAValue() {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        Select select = new Select(payBillsPage.currencyDropdpwn);
+        select.selectByIndex(6);
+        BrowserUtils.waitFor(2);
+        payBillsPage.calculateButton.click();
+        BrowserUtils.waitFor(2);
+
+    }
 }
 
