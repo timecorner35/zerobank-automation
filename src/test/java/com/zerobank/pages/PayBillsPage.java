@@ -33,6 +33,9 @@ public class PayBillsPage extends BasePage {
     @FindBy(id = "alert_content")
     public WebElement alertContent;
 
+    @FindBy(id = "pc_currency")
+    public WebElement currencyDropdpwn;
+
 
 
 
