@@ -12,5 +12,5 @@ Background:
       | Payee Address | T100 Same st, Anytown, USA, 10001        |
       | Account       | Checking                                 |
       | Payee Details | XYZ account                              |
-    Then message "The new payee The Law Offices of Hyde, Price & Scharks was successfully created" should be displayed
+    Then message "The new payee The Law Offices of Hyde, Price & Scharks was successfully created." should be displayed
 
