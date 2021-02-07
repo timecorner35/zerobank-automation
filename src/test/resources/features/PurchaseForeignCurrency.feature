@@ -1,7 +1,7 @@
 Feature:
   Purchase Foreign Currency
 
-  @wip
+
   Scenario: Available currencies
     Given the user is logged in
     Given the user accesses the "Pay Bills" page
@@ -20,6 +20,7 @@ Feature:
       | New Zealand (dollar)  |
       | Singapore (dollar)    |
 
+  @wip
   Scenario: Error message for not selecting currency
     Given the user is logged in
     Given the user accesses the "Pay Bills" page

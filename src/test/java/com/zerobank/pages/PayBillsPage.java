@@ -36,6 +36,16 @@ public class PayBillsPage extends BasePage {
     @FindBy(id = "pc_currency")
     public WebElement currencyDropdpwn;
 
+    @FindBy(id = "pc_amount")
+    public WebElement amountInput;
+
+    @FindBy(id = "purchase_cash")
+    public WebElement purchaseButton;
+
+    @FindBy(id = "pc_calculate_costs")
+    public WebElement calculateButton;
+
+
 
 
 
