@@ -4,6 +4,7 @@ import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.DashboardPage;
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.bs.A;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -29,7 +30,9 @@ public class FindTransactionsStepDef {
     @When("the user enters date range from {string} to {string}")
     public void the_user_enters_date_range_from_to(String string, String string2) {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
+        accountActivityPage.dateFrom.clear();
         accountActivityPage.dateFrom.sendKeys(string);
+        accountActivityPage.dateTo.clear();
         accountActivityPage.dateTo.sendKeys(string2);
 
 
@@ -41,9 +44,9 @@ public class FindTransactionsStepDef {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Date fromDate = simpleDateFormat.parse(string);
         Date toDate = simpleDateFormat.parse(string2);
+        BrowserUtils.waitFor(1);
         for (WebElement webElement : accountActivityPage.dateColomn) {
             Date date = simpleDateFormat.parse(webElement.getText());
-            System.out.println(date);
             if (!(date.compareTo(fromDate)>=0&&date.compareTo(toDate)<=0)){
                 Assert.fail();
             }else Assert.assertTrue(true);
@@ -61,16 +64,22 @@ public class FindTransactionsStepDef {
 
 
     @Then("the results should be sorted by most recent date")
-    public void the_results_should_be_sorted_by_most_recent_date() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    public void the_results_should_be_sorted_by_most_recent_date() throws ParseException {
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date mostRecent= simpleDateFormat.parse("2100-01-01");
+        for (WebElement webElement : accountActivityPage.dateColomn) {
+            if (simpleDateFormat.parse(webElement.getText()).compareTo(mostRecent)>=0){
+                Assert.fail();
+            }
+            mostRecent=simpleDateFormat.parse(webElement.getText());
+
+
+        }
+
+        Assert.assertTrue(true);
     }
 
-    @Then("the results table should only not contain transactions dated “{int}-{int}-{int}”")
-    public void the_results_table_should_only_not_contain_transactions_dated(Integer int1, Integer int2, Integer int3) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
 
     @When("the user enters description {string}")
     public void the_user_enters_description(String string) {
@@ -84,7 +93,7 @@ public class FindTransactionsStepDef {
     public void results_table_should_only_show_descriptions_containing(String string) throws Throwable {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         if (accountActivityPage.tablerows.size() == 0) {
-            Assert.assertTrue(false);
+            Assert.fail();
 
         }
 
@@ -163,4 +172,16 @@ public class FindTransactionsStepDef {
     }
 
 
+    @And("the results table should only not contain transactions dated {string}")
+    public void theResultsTableShouldOnlyNotContainTransactionsDated(String string) throws ParseException {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        AccountActivityPage accountActivityPage = new AccountActivityPage();
+        for (WebElement webElement : accountActivityPage.dateColomn) {
+            if (simpleDateFormat.parse(webElement.getText()).compareTo(simpleDateFormat.parse(string))==0){
+                Assert.fail();
+            }
+            Assert.assertTrue(true);
+
+        }
+    }
 }
