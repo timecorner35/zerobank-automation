@@ -35,6 +35,9 @@ public class AccountActivityPage extends BasePage{
     @FindBy(xpath = "//*[@id='filtered_transactions_for_account']//tbody//td[4]")
     public List<WebElement> withdrawColomn;
 
+    @FindBy(xpath = "//*[@id='filtered_transactions_for_account']//tbody//td[1]")
+    public List<WebElement> dateColomn;
+
     @FindBy(name = "type")
     public WebElement dropdown2;
 
