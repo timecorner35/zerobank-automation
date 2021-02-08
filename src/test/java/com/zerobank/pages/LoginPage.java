@@ -26,6 +26,9 @@ public class LoginPage {
     @FindBy(id = "proceed-link")
     public WebElement proceed;
 
+    @FindBy (css = ".alert.alert-error")
+    public WebElement alertwrong;
+
 
 
     public void login(){

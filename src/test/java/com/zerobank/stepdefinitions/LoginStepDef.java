@@ -36,4 +36,42 @@ public class LoginStepDef {
 
     }
 
+    @Then("{string} message should be displayed")
+    public void message_should_be_displayed(String string) {
+        Assert.assertEquals(string,new LoginPage().alertwrong.getText());
+
+    }
+
+    @When("the user enters the blank username and correct password")
+    public void the_user_enters_the_blank_username_and_correct_password() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.username.sendKeys("");
+        loginPage.password.sendKeys(ConfigurationReader.get("password"));
+        loginPage.submit.click();
+    }
+
+    @When("the user enters the correct username and blank password")
+    public void the_user_enters_the_correct_username_and_blank_password() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.username.sendKeys(ConfigurationReader.get("username"));
+        loginPage.password.sendKeys("");
+        loginPage.submit.click();
+    }
+
+    @When("the user enters the blank username and blank password")
+    public void the_user_enters_the_blank_username_and_blank_password() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.username.sendKeys("");
+        loginPage.password.sendKeys("");
+        loginPage.submit.click();
+    }
+
+    @When("the user enters the invalid username and password")
+    public void the_user_enters_the_invalid_username_and_password() {
+        LoginPage loginPage = new LoginPage();
+        loginPage.username.sendKeys("asdfe");
+        loginPage.password.sendKeys("asdfkj");
+        loginPage.submit.click();
+    }
+
 }
