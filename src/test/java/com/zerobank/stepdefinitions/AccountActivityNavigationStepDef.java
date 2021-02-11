@@ -4,6 +4,7 @@ import com.zerobank.pages.AccountActivityPage;
 import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.DashboardPage;
 import com.zerobank.pages.LoginPage;
+import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.ConfigurationReader;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
@@ -12,10 +13,12 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
+import java.util.List;
+
 public class AccountActivityNavigationStepDef {
 
     @Given("the user is logged in")
-    public void the_user_is_logged_in()  {
+    public void the_user_is_logged_in() {
         Driver.get().get(ConfigurationReader.get("url"));
         Driver.get().manage().window().maximize();
         new LoginPage().login();
@@ -36,9 +39,8 @@ public class AccountActivityNavigationStepDef {
     public void the_Account_Activity_page_should_be_displayed() {
         String actualTitle = Driver.get().getTitle();
         String expectedTitle = "Zero - Account Activity";
-        Assert.assertEquals(expectedTitle,actualTitle);
+        Assert.assertEquals(expectedTitle, actualTitle);
     }
-
 
 
     @When("Account drop down should have Savings selected")
@@ -88,6 +90,24 @@ public class AccountActivityNavigationStepDef {
     @Then("Account drop down should have Loan selected")
     public void account_drop_down_should_have_Loan_selected() {
         Assert.assertEquals("Loan", new AccountActivityPage().select.getFirstSelectedOption().getText());
+    }
+
+    @Then("the page should have following account types")
+    public void the_page_should_have_following_account_types(List<String> accountTypes) {
+        Assert.assertEquals(accountTypes, BrowserUtils.getElementsText(new AccountSummaryPage().accountTypes));
+
+    }
+
+    @Then("Credit Accounts table must have following columns")
+    public void credit_Accounts_table_must_have_following_columns(List<String> creditTypes) {
+        Assert.assertEquals(creditTypes,BrowserUtils.getElementsText(new AccountSummaryPage().creditRows));
+        System.out.println(BrowserUtils.getElementsText(new AccountSummaryPage().creditRows));
+
+
+    }
+    @Then("page should have the title {string} activity.")
+    public void page_should_have_the_title_activity(String string) {
+        Assert.assertEquals(string,Driver.get().getTitle());
     }
 
 
