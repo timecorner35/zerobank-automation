@@ -1,6 +1,6 @@
 Feature: Account Summary Page Features
 
-  @wip
+
   Scenario: Check Account Summary Page Title
     Given the user is logged in
     Given the user accesses the "Account Summary" page
