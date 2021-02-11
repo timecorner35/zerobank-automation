@@ -105,6 +105,11 @@ public class AccountActivityNavigationStepDef {
 
 
     }
+    @Then("page should have the title {string} activity.")
+    public void page_should_have_the_title_activity(String string) {
+        Assert.assertEquals(string,Driver.get().getTitle());
+    }
+
 
 
 }
