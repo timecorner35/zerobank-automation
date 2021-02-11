@@ -1,6 +1,6 @@
 Feature: Account Activity Page Features
 
-  @wip
+
   Scenario: Check Account Activity Page Title
     Given the user is logged in
     Given the user accesses the "Account Activity" page
