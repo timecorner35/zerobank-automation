@@ -41,6 +41,11 @@ public class AccountActivityPage extends BasePage{
     @FindBy(name = "type")
     public WebElement dropdown2;
 
+    @FindBy(xpath = "//div/table/thead/tr/th")
+    public List<WebElement> creditRows;
+
+
+
     //public Select selectTransactions = new Select(dropdown2);
 
 
