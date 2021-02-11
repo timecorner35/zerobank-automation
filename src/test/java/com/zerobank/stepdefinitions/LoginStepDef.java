@@ -8,8 +8,11 @@ import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.it.Ma;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+
+import java.util.Map;
 
 public class LoginStepDef {
     @Given("the user is on the login page")
@@ -42,36 +45,13 @@ public class LoginStepDef {
 
     }
 
-    @When("the user enters the blank username and correct password")
-    public void the_user_enters_the_blank_username_and_correct_password() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.username.sendKeys("");
-        loginPage.password.sendKeys(ConfigurationReader.get("password"));
-        loginPage.submit.click();
-    }
 
-    @When("the user enters the correct username and blank password")
-    public void the_user_enters_the_correct_username_and_blank_password() {
+    @When("the user logs in following {string} and {string}")
+    public void the_user_logs_in_following_and(String string, String string2) {
         LoginPage loginPage = new LoginPage();
-        loginPage.username.sendKeys(ConfigurationReader.get("username"));
-        loginPage.password.sendKeys("");
+        loginPage.username.sendKeys(string);
+        loginPage.password.sendKeys(string2);
         loginPage.submit.click();
-    }
 
-    @When("the user enters the blank username and blank password")
-    public void the_user_enters_the_blank_username_and_blank_password() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.username.sendKeys("");
-        loginPage.password.sendKeys("");
-        loginPage.submit.click();
     }
-
-    @When("the user enters the invalid username and password")
-    public void the_user_enters_the_invalid_username_and_password() {
-        LoginPage loginPage = new LoginPage();
-        loginPage.username.sendKeys("asdfe");
-        loginPage.password.sendKeys("asdfkj");
-        loginPage.submit.click();
-    }
-
 }
