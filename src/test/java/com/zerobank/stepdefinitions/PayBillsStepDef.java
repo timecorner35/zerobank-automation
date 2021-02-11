@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.Map;
 
 public class PayBillsStepDef {
     
@@ -39,4 +40,26 @@ public class PayBillsStepDef {
     public void shouldBeDisplayed(String arg0) {
         Assert.assertEquals(arg0,new PayBillsPage().alertcontent.getText());
     }
+
+    @When("user uses following {string} and {string}")
+    public void user_uses_following_and(String amount,String date) {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.chooseDate.sendKeys(date);
+        payBillsPage.chooseAmount.sendKeys(amount);
+
+    }
+    @Then("{string} message should be displated")
+    public void message_should_be_displated(String string) {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.description.sendKeys("hi",Keys.ENTER);
+        System.out.println(payBillsPage.chooseDate.getText());
+        System.out.println(payBillsPage.chooseAmount.getText());
+        Assert.assertEquals(string,payBillsPage.chooseAmount.getAttribute("validationMessage"));
+
+
+
+    }
+
+
+
 }
