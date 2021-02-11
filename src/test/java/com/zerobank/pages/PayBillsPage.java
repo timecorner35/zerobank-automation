@@ -45,7 +45,7 @@ public class PayBillsPage extends BasePage {
     @FindBy(id = "pc_calculate_costs")
     public WebElement calculateButton;
 
-    @FindBy(id = "sp_payeesp_payee")
+    @FindBy(id = "sp_payee")
     public WebElement choosePayee;
 
     @FindBy(id = "sp_account")
@@ -59,6 +59,12 @@ public class PayBillsPage extends BasePage {
 
     @FindBy(id = "sp_description")
     public WebElement description;
+
+    @FindBy(xpath = "//*[@id='alert_content']//span")
+    public WebElement alertcontent;
+
+    @FindBy(className = "pull-right")
+    public WebElement payButton;
 
 
 
