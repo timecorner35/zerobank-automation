@@ -11,6 +11,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
+import java.util.Map;
 
 public class PayBillsStepDef {
     
@@ -27,7 +28,7 @@ public class PayBillsStepDef {
                 payBillsPage.chooseAmount.sendKeys("100");
                 payBillsPage.chooseDate.sendKeys("2021-02-02", Keys.ENTER);
                 account.selectByIndex(j);
-              payBillsPage.description.sendKeys("hi",Keys.ENTER);
+                payBillsPage.description.sendKeys("hi",Keys.ENTER);
                 Assert.assertEquals("The payment was successfully submitted.", payBillsPage.alertcontent.getText());
 
             }
@@ -39,4 +40,42 @@ public class PayBillsStepDef {
     public void shouldBeDisplayed(String arg0) {
         Assert.assertEquals(arg0,new PayBillsPage().alertcontent.getText());
     }
+
+    @When("user uses following {string} and {string}")
+    public void user_uses_following_and(String amount,String date) {
+
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.chooseDate.sendKeys(date);
+        payBillsPage.chooseAmount.sendKeys(amount);
+
+    }
+    @Then("{string} message should be displated")
+    public void message_should_be_displated(String string) {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.description.sendKeys("hi",Keys.ENTER);
+        if (payBillsPage.chooseAmount.getAttribute("value").isEmpty()) {
+            Assert.assertEquals(string, payBillsPage.chooseAmount.getAttribute("validationMessage"));
+        }else Assert.assertEquals(string, payBillsPage.chooseDate.getAttribute("validationMessage"));
+
+
+    }
+
+    @When("user put invalid {string} into date and amount")
+    public void user_put_invalid_into_date_and_amount(String string) {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.chooseDate.sendKeys(string);
+        payBillsPage.chooseAmount.sendKeys(string);
+
+    }
+
+    @Then("Inputboxes shouldn't take these entries")
+    public void inputboxes_shouldn_t_take_these_entries() {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        if (payBillsPage.chooseAmount.getAttribute("value").isEmpty()&&payBillsPage.chooseDate.getAttribute("value").isEmpty()){
+            Assert.assertTrue(true);
+        }else Assert.fail();
+    }
+
+
+
 }
