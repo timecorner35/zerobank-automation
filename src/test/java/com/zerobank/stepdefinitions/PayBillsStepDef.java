@@ -43,6 +43,7 @@ public class PayBillsStepDef {
 
     @When("user uses following {string} and {string}")
     public void user_uses_following_and(String amount,String date) {
+
         PayBillsPage payBillsPage = new PayBillsPage();
         payBillsPage.chooseDate.sendKeys(date);
         payBillsPage.chooseAmount.sendKeys(amount);
@@ -52,9 +53,9 @@ public class PayBillsStepDef {
     public void message_should_be_displated(String string) {
         PayBillsPage payBillsPage = new PayBillsPage();
         payBillsPage.description.sendKeys("hi",Keys.ENTER);
-        System.out.println(payBillsPage.chooseDate.getText());
-        System.out.println(payBillsPage.chooseAmount.getText());
-        Assert.assertEquals(string,payBillsPage.chooseAmount.getAttribute("validationMessage"));
+        if (payBillsPage.chooseAmount.getAttribute("value").isEmpty()) {
+            Assert.assertEquals(string, payBillsPage.chooseAmount.getAttribute("validationMessage"));
+        }else Assert.assertEquals(string, payBillsPage.chooseDate.getAttribute("validationMessage"));
 
 
 
