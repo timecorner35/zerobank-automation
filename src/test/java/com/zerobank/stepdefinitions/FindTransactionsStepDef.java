@@ -1,6 +1,7 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountActivityPage;
+import com.zerobank.pages.AccountSummaryPage;
 import com.zerobank.pages.DashboardPage;
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.bs.A;
@@ -21,7 +22,7 @@ import java.util.Locale;
 public class FindTransactionsStepDef {
     @Given("the user accesses the Find Transactions tab")
     public void the_user_accesses_the_Find_Transactions_tab() {
-        new DashboardPage().accountActivity.click();
+        new AccountSummaryPage().accountActivity.click();
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         accountActivityPage.findTransactions.click();
 

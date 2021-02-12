@@ -33,7 +33,7 @@ Feature: Find Transactions in Account Activity
     And clicks search
     Then results table should only show descriptions containing "ONLINE"
 
-@wip
+
   Scenario: Type
     And clicks search
     Then results table should show at least one result under Deposit

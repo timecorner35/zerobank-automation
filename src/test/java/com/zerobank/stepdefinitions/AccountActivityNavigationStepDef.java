@@ -38,37 +38,9 @@ public class AccountActivityNavigationStepDef {
         Assert.assertEquals(expectedTitle, actualTitle);
     }
 
-
-    @Then("Account drop down should have Savings selected")
-    public void  account_drop_down_should_have_Savings_selected() {
-        Select select = new Select(new AccountActivityPage().dropdown);
-        Assert.assertEquals("Savings", select.getFirstSelectedOption().getText());
-    }
-
-
-    @Then("Account drop down should have Brokerage selected")
-    public void account_drop_down_should_have_Brokerage_selected() {
-        Assert.assertEquals("Brokerage", new AccountActivityPage().select.getFirstSelectedOption().getText());
-
-    }
-
-    @Then("Account drop down should have Checking selected")
-    public void account_drop_down_should_have_Checking_selected() {
-        Assert.assertEquals("Checking", new AccountActivityPage().select.getFirstSelectedOption().getText());
-    }
-
-
-
-    @Then("Account drop down should have Credit Card selected")
-    public void account_drop_down_should_have_Credit_Card_selected() {
-        Assert.assertEquals("Credit Card", new AccountActivityPage().select.getFirstSelectedOption().getText());
-    }
-
-
-
-    @Then("Account drop down should have Loan selected")
-    public void account_drop_down_should_have_Loan_selected() {
-        Assert.assertEquals("Loan", new AccountActivityPage().select.getFirstSelectedOption().getText());
+    @Then("Account drop down should have {string} selected")
+    public void account_drop_down_should_have_selected(String string) {
+        Assert.assertEquals(string, new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
 
 
