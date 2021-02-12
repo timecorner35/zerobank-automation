@@ -1,7 +1,6 @@
 package com.zerobank.stepdefinitions;
 
 import com.zerobank.pages.AccountSummaryPage;
-import com.zerobank.pages.DashboardPage;
 import com.zerobank.pages.PayBillsPage;
 import com.zerobank.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
