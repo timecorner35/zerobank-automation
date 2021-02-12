@@ -28,7 +28,7 @@ public class PayBillsStepDef {
                 payBillsPage.chooseAmount.sendKeys("100");
                 payBillsPage.chooseDate.sendKeys("2021-02-02", Keys.ENTER);
                 account.selectByIndex(j);
-              payBillsPage.description.sendKeys("hi",Keys.ENTER);
+                payBillsPage.description.sendKeys("hi",Keys.ENTER);
                 Assert.assertEquals("The payment was successfully submitted.", payBillsPage.alertcontent.getText());
 
             }
@@ -58,7 +58,22 @@ public class PayBillsStepDef {
         }else Assert.assertEquals(string, payBillsPage.chooseDate.getAttribute("validationMessage"));
 
 
+    }
 
+    @When("user put invalid {string} into date and amount")
+    public void user_put_invalid_into_date_and_amount(String string) {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        payBillsPage.chooseDate.sendKeys(string);
+        payBillsPage.chooseAmount.sendKeys(string);
+
+    }
+
+    @Then("Inputboxes shouldn't take these entries")
+    public void inputboxes_shouldn_t_take_these_entries() {
+        PayBillsPage payBillsPage = new PayBillsPage();
+        if (payBillsPage.chooseAmount.getAttribute("value").isEmpty()&&payBillsPage.chooseDate.getAttribute("value").isEmpty()){
+            Assert.assertTrue(true);
+        }else Assert.fail();
     }
 
 
