@@ -40,13 +40,13 @@ public class AccountActivityNavigationStepDef {
 
 
     @Then("Account drop down should have Savings selected")
-    public void account_drop_down_should_have_Savings_selected() {
+    public void  account_drop_down_should_have_Savings_selected() {
         Select select = new Select(new AccountActivityPage().dropdown);
         Assert.assertEquals("Savings", select.getFirstSelectedOption().getText());
     }
 
 
-    @When("Account drop down should have Brokerage selected")
+    @Then("Account drop down should have Brokerage selected")
     public void account_drop_down_should_have_Brokerage_selected() {
         Assert.assertEquals("Brokerage", new AccountActivityPage().select.getFirstSelectedOption().getText());
 

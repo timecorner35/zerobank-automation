@@ -1,5 +1,7 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -65,6 +67,10 @@ public class PayBillsPage extends BasePage {
 
     @FindBy(className = "pull-right")
     public WebElement payButton;
+
+    public void navigateTo(String s){
+        Driver.get().findElement(By.xpath("//*[.='" + s + "']")).click();
+    }
 
 
 

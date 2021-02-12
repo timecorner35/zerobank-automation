@@ -28,6 +28,10 @@ public abstract class BasePage {
     @FindBy(id = "online_statements_tab")
     public WebElement onlineStatements;
 
+    public void navigateToPage(String s){
+        Driver.get().findElement(By.xpath("//*[.='" + s + "']")).click();
+    }
+
 
 
     }
