@@ -30,12 +30,6 @@ public class AccountActivityNavigationStepDef {
 
     }
 
-    @When("the user clicks on Savings link on the Account Summary page")
-    public void the_user_clicks_on_Savings_link_on_the_Account_Summary_page() {
-        new DashboardPage().accountSummary.click();
-        new AccountSummaryPage().savings.click();
-
-    }
 
     @Then("the Account Activity page should be displayed")
     public void the_Account_Activity_page_should_be_displayed() {
@@ -45,17 +39,10 @@ public class AccountActivityNavigationStepDef {
     }
 
 
-    @When("Account drop down should have Savings selected")
+    @Then("Account drop down should have Savings selected")
     public void account_drop_down_should_have_Savings_selected() {
         Select select = new Select(new AccountActivityPage().dropdown);
         Assert.assertEquals("Savings", select.getFirstSelectedOption().getText());
-    }
-
-
-    @When("the user clicks on Brokerage link on the Account Summary page")
-    public void the_user_clicks_on_Brokerage_link_on_the_Account_Summary_page() {
-        new DashboardPage().accountSummary.click();
-        new AccountSummaryPage().brokarage.click();
     }
 
 
@@ -65,35 +52,26 @@ public class AccountActivityNavigationStepDef {
 
     }
 
-    @When("the user clicks on Checking link on the Account Summary page")
-    public void the_user_clicks_on_Checking_link_on_the_Account_Summary_page() {
-        new AccountSummaryPage().checking.click();
-    }
-
     @Then("Account drop down should have Checking selected")
     public void account_drop_down_should_have_Checking_selected() {
         Assert.assertEquals("Checking", new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
 
-    @When("the user clicks on Credit card link on the Account Summary page")
-    public void the_user_clicks_on_Credit_card_link_on_the_Account_Summary_page() {
-        new AccountSummaryPage().creditCard.click();
-    }
+
 
     @Then("Account drop down should have Credit Card selected")
     public void account_drop_down_should_have_Credit_Card_selected() {
         Assert.assertEquals("Credit Card", new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
 
-    @When("the user clicks on Loan link on the Account Summary page")
-    public void the_user_clicks_on_Loan_link_on_the_Account_Summary_page() {
-        new AccountSummaryPage().loan.click();
-    }
+
 
     @Then("Account drop down should have Loan selected")
     public void account_drop_down_should_have_Loan_selected() {
         Assert.assertEquals("Loan", new AccountActivityPage().select.getFirstSelectedOption().getText());
     }
+
+
 
 
 

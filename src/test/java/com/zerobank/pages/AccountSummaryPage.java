@@ -1,5 +1,7 @@
 package com.zerobank.pages;
 
+import com.zerobank.utilities.Driver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -27,7 +29,9 @@ public class AccountSummaryPage extends BasePage{
     @FindBy(xpath = "(//div/div/div)[15]//div/table/thead/tr/th")
     public List<WebElement> creditRows;
 
+    public void navigateTo(String s) {
+        Driver.get().findElement(By.xpath("//*[.='" + s + "']")).click();
 
 
-
+    }
 }

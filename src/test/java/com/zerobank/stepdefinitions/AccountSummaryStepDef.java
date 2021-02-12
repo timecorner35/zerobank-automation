@@ -5,6 +5,7 @@ import com.zerobank.utilities.BrowserUtils;
 import com.zerobank.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 
 import java.util.List;
@@ -26,6 +27,14 @@ public class AccountSummaryStepDef {
     @Then("page should have the title {string} activity.")
     public void page_should_have_the_title_activity(String string) {
         Assert.assertEquals(string, Driver.get().getTitle());
+    }
+
+    @When("the user clicks on {string} link on the Account Summary page")
+    public void the_user_clicks_on_link_on_the_Account_Summary_page(String string) {
+        new AccountSummaryPage().navigateTo(string);
+
+
+
     }
 
 

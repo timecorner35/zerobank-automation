@@ -19,7 +19,7 @@ Feature: Pay Bills Page Features
       |        | 2021-02-02 |
       | 100    |            |
       |        |            |
-  @wip
+
   Scenario Outline: Date and amount shouldn't accept invalid inputs
     Given the user is logged in
     Given the user accesses the "Pay Bills" page
