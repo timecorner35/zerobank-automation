@@ -1,17 +1,15 @@
 Feature: Pay Bills Page Features
 
-  Scenario: Making Paymenet successfully
+  Background:
     Given the user is logged in
     Given the user accesses the "Pay Bills" page
     Then page should have the title "Zero - Pay Bills" activity.
-    And user choose all combination of payee and amount
+
+  Scenario: Making Paymenet successfully
+    When user choose all combination of payee and amount
     Then "The payment was successfully submitted." should be displayed
 
-
   Scenario Outline: Making Paymenet without filling fields
-    Given the user is logged in
-    Given the user accesses the "Pay Bills" page
-    Then page should have the title "Zero - Pay Bills" activity.
     When user uses following "<amount>" and "<date>"
     Then "Please fill in this field." message should be displated
     Examples:
@@ -21,15 +19,12 @@ Feature: Pay Bills Page Features
       |        |            |
 
   Scenario Outline: Date and amount shouldn't accept invalid inputs
-    Given the user is logged in
-    Given the user accesses the "Pay Bills" page
-    Then page should have the title "Zero - Pay Bills" activity.
     When user put invalid "<characters>" into date and amount
     Then Inputboxes shouldn't take these entries
     Examples:
-    |characters|
-    |abcde     |
-    |abc£%     |
-    |    1  3  |
+      | characters |
+      | abcde      |
+      | abc£%      |
+      | 1  3       |
 
 

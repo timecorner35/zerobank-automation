@@ -1,11 +1,13 @@
 Feature:
   Purchase Foreign Currency
 
-
-  Scenario: Available currencies
+  Background:
     Given the user is logged in
     Given the user accesses the "Pay Bills" page
     Given user access "Purchase foreign currency" tab
+
+
+  Scenario: Available currencies
     Then following currencies should be available
       | Australia (dollar)    |
       | Canada (dollar)       |
@@ -22,15 +24,9 @@ Feature:
 
 
   Scenario: Error message for not selecting currency
-    Given the user is logged in
-    Given the user accesses the "Pay Bills" page
-    Given user access "Purchase foreign currency" tab
     When user tries to calculate cost without selecting a currency
     Then error message should be displayed
 
   Scenario: Error message for not entering value
-    Given the user is logged in
-    Given the user accesses the "Pay Bills" page
-    Given user access "Purchase foreign currency" tab
     When user tries to calculate cost without entering a value
     Then error message should be displayed

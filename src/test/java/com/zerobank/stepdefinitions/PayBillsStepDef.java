@@ -15,7 +15,7 @@ import java.util.Map;
 
 public class PayBillsStepDef {
     
-    @And("user choose all combination of payee and amount")
+    @When("user choose all combination of payee and amount")
     public void userChooseAllCombinationOfPayeeAndAmount() {
         PayBillsPage payBillsPage = new PayBillsPage();
 
