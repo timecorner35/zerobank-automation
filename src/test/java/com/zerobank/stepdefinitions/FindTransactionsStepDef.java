@@ -113,7 +113,7 @@ public class FindTransactionsStepDef {
     public void results_table_should_show_at_least_one_result_under_Deposit() {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         for (WebElement webElement : accountActivityPage.depositColomn) {
-            if (!webElement.getText().isBlank()) {
+            if (!webElement.getText().isEmpty()) {
                 Assert.assertTrue(true);
                 return;
             }
@@ -125,7 +125,7 @@ public class FindTransactionsStepDef {
     public void results_table_should_show_at_least_one_result_under_Withdrawal() {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         for (WebElement webElement : accountActivityPage.withdrawColomn) {
-            if (!webElement.getText().isBlank()) {
+            if (!webElement.getText().isEmpty()) {
                 Assert.assertTrue(true);
                 return;
             }
@@ -147,7 +147,7 @@ public class FindTransactionsStepDef {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         for (WebElement webElement : accountActivityPage.withdrawColomn) {
             System.out.println(webElement.getText());
-            if (!webElement.getText().isBlank()) {
+            if (!webElement.getText().isEmpty()) {
                 Assert.fail();
                 return;
             }
@@ -161,7 +161,7 @@ public class FindTransactionsStepDef {
         AccountActivityPage accountActivityPage = new AccountActivityPage();
         for (WebElement webElement : accountActivityPage.depositColomn) {
             System.out.println(webElement.getText());
-            if (!webElement.getText().isBlank()) {
+            if (!webElement.getText().isEmpty()) {
                 Assert.fail();
                 return;
             }
